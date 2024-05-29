@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade para Namoro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        header{
+    background-color: rgb(222, 252, 221);
+    min-width: 400px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: green;
+        }
+        footer{
+    background-color: #025310;
+    padding: 5px;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: azure;
+        }
+        #t{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header>
+<div>
+<img src="logoifce.png" width="300" alt="logo do ifce">
+</div>
+<h1>IFCE - SITE DE RELACIONAMENTOS</h1>
+    </header>
+    <h1>proposito do site</h1>
+    <p>nesse site você sera capaz de realizar um calculo para saber com qual idade você pode namorar alguem, fazendo o seguinte procedimento, digitando para nos sua idade e mes de nascença e deixar que nossa calculadora realize os seguinte calculos.</p>
+        <li>Cálculo da idade mínima de namoro;</li>
+        <li>Cálculo para saber a idade máxima que você pode namorar;</li>
+        <li>Comparativo das idades do casal para saber se podem namorar;</li>
+        <li>Comparativo da idade do trisal para saber se podem namorar;</li>
+        <li>Pessoas acima de 100 anos não podem namorar, é a lei 8.112 da Constituição Federal;</li>
+        <li>A calculadora deve receber a idade também em meses e fazer o cálculo arredondando para cima.</li>
+        <br>
+    <div id="t"><h1>Calculadora de Idade para Namoro</h1>
+    </div>
+    <label for="idade">Digite sua idade em anos:</label>
+    <input type="number" id="idade" min="1" required>
+    <label for="meses">Meses:</label>
+    <input type="number" id="meses" min="0">
+    <br><br>
+    <button onclick="calcular()">Calcular</button>
+    <div id="resultado"></div>
+    <script>
+        function calcular(){
+            var idade = parseInt(document.getElementById('idade').value);
+            var meses = parseInt(document.getElementById('meses').value) || 0;
+            var idadeTotal = idade + Math.ceil(meses / 12);
+            if (idadeTotal >= 100) {
+            document.getElementById('resultado').innerHTML = "Você está acima dos 100 anos. Segundo a lei 8.112 da Constituição Federal, não é permitido namorar.";
+                return;
+            }
+             if (idadeTotal < 13){
+            document.getElementById('resultado').innerHTML = "Você ainda não tem idade para namorar";
+                return;
+            }
+            var idadeMinima = Math.ceil(idadeTotal / 2 + 7);
+            var idadeMaxima = idadeTotal * 2 - 13;
+            if(idadeMaxima >= 100){
+                idadeMaxima = "Você passou da idade maxima em";
+            }
+            var comparativoIdade = "Você pode namorar alguém entre " + idadeMinima + " e " + idadeMaxima + " anos.";
+            var comparativoTrisal = "Você pode fazer parte de um trisal com pessoas que tenham no mínimo " + idadeMinima + " anos.";
+            document.getElementById('resultado').innerHTML = comparativoIdade + "<br>" + comparativoTrisal;
+        }
+    </script>
+    <h2>sobre o site</h2>
+    <p>esse site tem o intuito unico de apenas realizar os calculos de relacionamentos.</p>
+    <br>
+<footer>
+<p>2024 - IFCE - Campus Jaguaruana<br>
+Site desenvolvido pelo aluno do curso Superior em ADS - Todos os direitos reservados.</p>
+</footer>
+</body>
+</html>
